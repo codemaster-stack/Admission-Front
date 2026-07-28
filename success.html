@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusHub Application Successful</title>
+
+<link rel="stylesheet" href="css/admission.css">
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+<div class="card success-card">
+
+
+<div class="logo">
+✅
+</div>
+
+
+<h1>
+Application Received
+</h1>
+
+
+<p class="subtitle">
+
+Your payment was successful and your admission application has been received.
+
+</p>
+
+
+
+<div class="payment-box">
+
+
+<h3>
+Application Reference
+</h3>
+
+
+<h2 id="reference">
+Loading...
+</h2>
+
+
+</div>
+
+
+
+<p>
+
+CampusHub will notify you through your email when your application status changes.
+
+</p>
+
+
+
+<a href="index.html">
+
+<button class="payBtn">
+
+Return Home
+
+</button>
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+const ref =
+
+"CAMPUSHUB-" + Date.now();
+
+
+
+document.getElementById("reference").innerHTML = ref;
+
+
+
+localStorage.removeItem(
+
+"campushubAdmission"
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>
