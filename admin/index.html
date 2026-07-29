@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusHub Admin Dashboard</title>
+
+<link rel="stylesheet" href="../css/admin.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>CampusHub Admin Dashboard</h1>
+
+    <p>Manage Schools, Faculties, Departments & Programmes</p>
+
+    <div class="menu">
+
+        <button id="schoolBtn">Schools</button>
+
+        <button id="facultyBtn">Faculties</button>
+
+        <button id="departmentBtn">Departments</button>
+
+        <button id="programmeBtn">Programmes</button>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- SCHOOLS -->
+    <!-- ========================= -->
+
+    <div id="schoolsPage" class="page">
+
+        <h2>Schools</h2>
+
+        <input
+            type="text"
+            id="schoolSearch"
+            placeholder="Search schools...">
+
+        <div id="schoolList"></div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- FACULTIES -->
+    <!-- ========================= -->
+
+    <div id="facultiesPage" class="page" style="display:none;">
+
+        <h2>Faculties</h2>
+
+        <div class="field">
+
+            <label>School</label>
+
+            <select id="facultySchool">
+
+                <option value="">Select School</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Faculty Name</label>
+
+            <input
+                type="text"
+                id="facultyName">
+
+        </div>
+
+        <button id="saveFaculty">
+
+            Add Faculty
+
+        </button>
+
+        <hr>
+
+        <div id="facultyList"></div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- DEPARTMENTS -->
+    <!-- ========================= -->
+
+    <div id="departmentsPage" class="page" style="display:none;">
+
+        <h2>Departments</h2>
+
+        <div class="field">
+
+            <label>School</label>
+
+            <select id="departmentSchool">
+
+                <option value="">Select School</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Faculty</label>
+
+            <select id="departmentFaculty">
+
+                <option value="">Select Faculty</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Department Name</label>
+
+            <input
+                type="text"
+                id="departmentName">
+
+        </div>
+
+        <button id="saveDepartment">
+
+            Add Department
+
+        </button>
+
+        <hr>
+
+        <div id="departmentList"></div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- PROGRAMMES -->
+    <!-- ========================= -->
+
+    <div id="programmesPage" class="page" style="display:none;">
+
+        <h2>Programmes</h2>
+
+        <div class="field">
+
+            <label>School</label>
+
+            <select id="programmeSchool">
+
+                <option value="">Select School</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Faculty</label>
+
+            <select id="programmeFaculty">
+
+                <option value="">Select Faculty</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Department</label>
+
+            <select id="programmeDepartment">
+
+                <option value="">Select Department</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Programme Name</label>
+
+            <input
+                type="text"
+                id="programmeName">
+
+        </div>
+
+        <div class="field">
+
+            <label>Duration</label>
+
+            <input
+                type="number"
+                 id="programmeDuration"
+                 placeholder="e.g. 4"
+                 min="1">
+
+        </div>
+
+        <div class="field">
+
+            <label>Level</label>
+
+            <select id="programmeLevel">
+
+                <option>Undergraduate</option>
+                <option>Postgraduate</option>
+                <option>Diploma</option>
+
+            </select>
+
+        </div>
+
+        <button id="saveProgramme">
+
+            Add Programme
+
+        </button>
+
+        <hr>
+
+        <div id="programmeList"></div>
+
+    </div>
+
+</div>
+
+<script src="../js/admin.js"></script>
+
+</body>
+
+</html>

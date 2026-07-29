@@ -59,7 +59,7 @@ currencyMap[application.country] || "USD";
 
 
 
-const amount = 25;
+const amount = application.amount;
 
 
 
@@ -74,13 +74,6 @@ document.getElementById("currency").innerHTML =
 currency;
 
 
-
-
-// ------------------------------
-// FLUTTERWAVE PAYMENT
-// ------------------------------
-
-
 document
 
 .getElementById("payButton")
@@ -93,7 +86,7 @@ FlutterwaveCheckout({
 
     public_key:
 
-    "FLWPUBK-e99f1608aec1655f849f6b63fe25a7cb-X",
+    "FLWPUBK_TEST-b557be59f1b553143efee33d3f7831be-X",
 
 
     tx_ref:
@@ -161,35 +154,86 @@ FlutterwaveCheckout({
 
 
 
-    callback:function(payment){
+ callback: async function (payment) {
+
+    console.log("========== CALLBACK START ==========");
+    console.log(payment);
+
+    if (payment.status !== "successful") {
+
+        console.log("Payment not successful");
+
+        return;
+
+    }
+
+    console.log("About to call backend...");
+
+    try {
+
+        console.log("Sending request to verify endpoint...");
+
+        const response = await fetch(
+            "http://localhost:5000/api/payments/verify",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    transaction_id: payment.transaction_id,
+                    application
+                })
+            }
+        );
+
+        console.log("Response received:", response.status);
+
+        const result = await response.json();
+
+        console.log(result);
 
 
-        console.log(payment);
+        if (!response.ok) {
 
+    const error = await response.json();
 
+    alert(error.message || "Payment verification failed.");
 
-      if(payment.status === "successful"){
+    return;
 
+}
+
+const result = await response.json();
+
+       if (result.success) {
 
     localStorage.setItem(
-
         "flutterwavePayment",
-
         JSON.stringify(payment)
-
     );
 
+    localStorage.setItem(
+        "applicationNumber",
+        result.application.applicationNumber
+    );
 
-    window.location.href="success.html";
+    window.location.href = "success.html";
 
+       } else {
 
-
-
+            alert("Payment verification failed.");
 
         }
 
+    } catch (error) {
 
-    },
+        console.error(error);
+        alert("Unable to verify payment.");
+
+    }
+
+},
 
 
 

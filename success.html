@@ -29,13 +29,15 @@
 
 
 <h1>
-Application Received
+🎉 Application Submitted Successfully
 </h1>
 
 
 <p class="subtitle">
 
-Your payment was successful and your admission application has been received.
+Your payment has been confirmed and your admission application has been successfully submitted.
+
+Please save your application reference number. You will need it to track your application status.
 
 </p>
 
@@ -48,15 +50,29 @@ Your payment was successful and your admission application has been received.
 Application Reference
 </h3>
 
+<div class="payment-box">
 
-<h2 id="reference">
-Loading...
-</h2>
+    <h3>
+        Application Reference
+    </h3>
 
+    <h2 id="reference">
+        Loading...
+    </h2>
 
 </div>
 
+<div class="payment-box">
 
+    <h3>
+        Application Status
+    </h3>
+
+    <h2 style="color:green;">
+        Submitted ✓
+    </h2>
+
+</div>
 
 <p>
 
@@ -68,41 +84,31 @@ CampusHub will notify you through your email when your application status change
 
 <a href="index.html">
 
-<button class="payBtn">
+    <button class="payBtn">
 
-Return Home
+        Return Home
 
-</button>
+    </button>
 
 </a>
 
-
-
-</div>
-
-
-</div>
 
 
 
 <script>
 
 
-const ref =
+const applicationNumber =
+localStorage.getItem("applicationNumber");
 
-"CAMPUSHUB-" + Date.now();
+document.getElementById("reference").innerHTML =
+applicationNumber || "Not Available";
 
+// Clear temporary storage
 
-
-document.getElementById("reference").innerHTML = ref;
-
-
-
-localStorage.removeItem(
-
-"campushubAdmission"
-
-);
+localStorage.removeItem("campushubAdmission");
+localStorage.removeItem("flutterwavePayment");
+// localStorage.removeItem("applicationNumber");
 
 
 </script>

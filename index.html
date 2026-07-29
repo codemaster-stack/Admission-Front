@@ -34,7 +34,7 @@
 
             <div class="step active">
                 <div class="number">1</div>
-                <span>Select Institution</span>
+                <span>Choose Destination</span>
             </div>
 
             <div class="step">
@@ -90,51 +90,87 @@
 
            <form id="admissionForm">
 
-    <!-- STEP 1 -->
+   <!-- STEP 1 -->
 
-    <div class="form-step active" id="step1">
+<div class="form-step active" id="step1">
 
-        <div class="field">
+    <!-- Country -->
 
-            <label>Select Institution</label>
+    <div class="field">
 
-            <select id="school">
+        <label>Country</label>
 
-                <option value="">
-                    Choose Institution
-                </option>
+        <select id="country">
 
-            </select>
+            <option value="">
+                Choose Destination
+            </option>
 
-        </div>
-
-        <div class="field">
-
-            <label>Country</label>
-
-            <select id="country">
-
-                <option value="">
-                    Choose Country
-                </option>
-
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>Admission Session</label>
-
-            <select id="session">
-
-                <option>2026 / 2027</option>
-
-            </select>
-
-        </div>
+        </select>
 
     </div>
+
+    <!-- Institution Type -->
+
+    <div class="field">
+
+        <label>Institution Type</label>
+
+        <select id="institutionType">
+
+            <option value="">
+                Choose Institution Type
+            </option>
+
+            <option value="University">University</option>
+
+            <option value="Polytechnic">Polytechnic</option>
+
+            <option value="College">College</option>
+
+            <option value="Vocational School">Vocational School</option>
+
+            <option value="Language School">Language School</option>
+
+        </select>
+
+    </div>
+
+    <!-- Institution -->
+
+    <div class="field">
+
+        <label>Select Institution</label>
+
+        <select id="school" disabled>
+
+            <option value="">
+                Choose Institution
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- Admission Session -->
+
+    <div class="field">
+
+        <label>Admission Session</label>
+
+        <select id="session">
+
+            <option>2026 / 2027</option>
+
+            <option>2027 / 2028</option>
+
+            <option>2028 / 2029</option>
+
+        </select>
+
+    </div>
+
+</div>
 
 
 
@@ -271,54 +307,86 @@
     <!-- STEP 5 EDUCATION -->
 
 
-    <div class="form-step" id="step5">
+   <div class="form-step" id="step5">
 
+    <!-- Previous School -->
 
-        <div class="field">
+    <div class="field">
 
-            <label>Previous School</label>
+        <label>Previous School</label>
 
-            <input
+        <input
             type="text"
-            id="previousSchool">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>Highest Qualification</label>
-
-            <select id="qualification">
-
-
-                <option>WAEC</option>
-
-                <option>NECO</option>
-
-                <option>High School Diploma</option>
-
-                <option>Bachelor Degree</option>
-
-
-             </select>
-
-        </div>
-
-
-
-        <div class="field">
-
-           <label>Graduation Year</label>
-
-           <input
-           type="number"
-           id="graduationYear">
-
-        </div>
-
+            id="previousSchool"
+            placeholder="Enter the name of your previous school">
 
     </div>
+
+    <!-- Highest Qualification -->
+
+    <div class="field">
+
+        <label>Highest Qualification</label>
+
+        <select id="qualification">
+
+            <option value="">Select Highest Qualification</option>
+
+            <option>Secondary / High School Certificate</option>
+
+            <option>High School Diploma</option>
+
+            <option>Foundation Programme / Pre-University</option>
+
+            <option>Diploma</option>
+
+            <option>Advanced Diploma</option>
+
+            <option>Associate Degree</option>
+
+            <option>Bachelor's Degree</option>
+
+            <option>Postgraduate Diploma</option>
+
+            <option>Master's Degree</option>
+
+            <option>Doctorate (PhD)</option>
+
+            <option>Professional Qualification</option>
+
+            <option>Other</option>
+
+        </select>
+
+    </div>
+
+    <!-- Qualification / Examination Name -->
+
+    <div class="field">
+
+        <label>Qualification / Examination Name</label>
+
+        <input
+            type="text"
+            id="qualificationName"
+            placeholder="e.g. WAEC, KCSE, A-Level, IB Diploma, National Senior Certificate">
+
+    </div>
+
+    <!-- Graduation Year -->
+
+    <div class="field">
+
+        <label>Graduation Year</label>
+
+        <input
+            type="number"
+            id="graduationYear"
+            placeholder="e.g. 2024">
+
+    </div>
+
+</div>
 
 
 
@@ -411,9 +479,14 @@
 
             </p>
 
-
         </div>
-
+            <button
+                 type="button"
+                 id="payButton"
+                 class="btn"
+>
+                Pay Application Fee →
+            </button>
 
     </div>
 
@@ -447,7 +520,7 @@
 </div>
 
 <script src="https://checkout.flutterwave.com/v3.js"></script>
-<script src="js/payment.js"></script>
+<!-- <script src="js/payment.js"></script> -->
 <script src="js/admission.js"></script>
 
 </body>

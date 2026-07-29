@@ -389,3 +389,45 @@ RESPONSIVE
     color:#111827 !important;
 
 }
+
+/* Sidebar progress */
+
+.sidebar .step{
+
+    transition:.3s;
+
+}
+
+.sidebar .step.completed .number{
+
+    background:#10b981;
+
+    color:#fff;
+
+}
+
+.sidebar .step.active .number{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    transform:scale(1.1);
+
+}
+
+.sidebar .step.completed span{
+
+    color:#10b981;
+
+    font-weight:600;
+
+}
+
+.sidebar .step.active span{
+
+    color:#2563eb;
+
+    font-weight:700;
+
+}
