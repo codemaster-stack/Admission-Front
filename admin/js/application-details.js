@@ -144,3 +144,69 @@ Reject
 }
 
 loadApplication();
+
+async function updateStatus(status) {
+
+    try {
+
+        const response = await fetch(
+
+            `https://admission-api-r5y6.onrender.com/api/admissions/${id}/status`,
+
+            {
+
+                method: "PATCH",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    applicationStatus: status
+
+                })
+
+            }
+
+        );
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert(`Application ${status}.`);
+
+            loadApplication();
+
+        } else {
+
+            alert(result.message);
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert("Unable to update application.");
+
+    }
+
+}
+
+function approveApplication() {
+
+    updateStatus("Approved");
+
+}
+
+function rejectApplication() {
+
+    updateStatus("Rejected");
+
+}
