@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/admission.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
 </head>
 
 <body>
@@ -250,7 +252,13 @@
 
             <label>Phone Number</label>
 
-            <input type="text" id="phone">
+            <input
+               type="tel"
+               id="phone"
+               autocomplete="tel"
+               placeholder="Enter phone number"
+               required
+              >
 
         </div>
 
@@ -272,15 +280,16 @@
          </div>
 
 
-        <div class="field">
-
-           <label>Guardian Phone</label>
-
-            <input 
-            type="text"
-            id="guardianPhone">
-
-        </div>
+       <div class="field">
+          <label>Guardian Phone</label>
+          <input
+                  type="tel"
+                  id="guardianPhone"
+                  autocomplete="tel"
+                  placeholder="Enter guardian phone number"
+                  required
+                  >
+      </div>
 
 
       <div class="field">
@@ -520,7 +529,7 @@
 </div>
 
 <script src="https://checkout.flutterwave.com/v3.js"></script>
-<!-- <script src="js/payment.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
 <script src="js/admission.js"></script>
 
 </body>

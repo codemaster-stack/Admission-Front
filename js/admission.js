@@ -3,8 +3,48 @@ const schoolSelect = document.getElementById("school");
 const facultySelect = document.getElementById("faculty");
 const departmentSelect = document.getElementById("department");
 const programmeSelect = document.getElementById("programme");
-const institutionTypeSelect =
-document.getElementById("institutionType");
+const institutionTypeSelect = document.getElementById("institutionType");
+
+const phoneInput = document.querySelector("#phone");
+const guardianPhoneInput = document.querySelector("#guardianPhone");
+
+const phoneConfig = {
+
+    initialCountry: "auto",
+
+    preferredCountries: [
+        "ng",
+        "gh",
+        "ke",
+        "za",
+        "gb",
+        "us",
+        "ca"
+    ],
+
+    separateDialCode: true,
+
+    nationalMode: false,
+
+    autoPlaceholder: "aggressive",
+
+    loadUtils: () =>
+        import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js"),
+
+    geoIpLookup: function (callback) {
+
+        fetch("https://ipapi.co/json/")
+            .then(res => res.json())
+            .then(data => callback(data.country_code.toLowerCase()))
+            .catch(() => callback("ng"));
+
+    }
+
+};
+
+const iti = window.intlTelInput(phoneInput, phoneConfig);
+const guardianIti = window.intlTelInput(guardianPhoneInput, phoneConfig);
+
 
 function startLoading(buttonId, text) {
     const btn = document.getElementById(buttonId);
@@ -278,13 +318,13 @@ function getApplicationData() {
 
         email: document.getElementById("email").value,
 
-        phone: document.getElementById("phone").value,
+        phone: iti.getNumber(),
 
         // Guardian
 
         guardianName: document.getElementById("guardianName").value,
 
-        guardianPhone: document.getElementById("guardianPhone").value,
+        guardianPhone: guardianIti.getNumber(),
 
         guardianRelation: document.getElementById("guardianRelation").value,
 
@@ -321,11 +361,49 @@ async function submitApplication() {
 
     startLoading("nextBtn", "Submitting...");
 
+    // ------------------------------
+    // Validate Phone Numbers
+    // ------------------------------
+
+    if (!iti.isValidNumber()) {
+
+        alert("Please enter a valid phone number.");
+
+        phoneInput.focus();
+
+        stopLoading("nextBtn", "Proceed to Payment");
+
+        return;
+
+    }
+
+    if (!guardianIti.isValidNumber()) {
+
+        alert("Please enter a valid guardian phone number.");
+
+        guardianPhoneInput.focus();
+
+        stopLoading("nextBtn", "Proceed to Payment");
+
+        return;
+
+    }
+
+    // ------------------------------
+    // Get Application Data
+    // ------------------------------
+
     const application = getApplicationData();
+
+    // ------------------------------
+    // Validate Required Fields
+    // ------------------------------
 
     if (!application.country) {
 
         alert("Please select your destination.");
+
+        stopLoading("nextBtn", "Proceed to Payment");
 
         return;
 
@@ -335,6 +413,8 @@ async function submitApplication() {
 
         alert("Please select institution type.");
 
+        stopLoading("nextBtn", "Proceed to Payment");
+
         return;
 
     }
@@ -343,14 +423,22 @@ async function submitApplication() {
 
         alert("Please select institution.");
 
+        stopLoading("nextBtn", "Proceed to Payment");
+
         return;
 
     }
+
+    // ------------------------------
+    // Save Application
+    // ------------------------------
 
     localStorage.setItem(
         "campushubAdmission",
         JSON.stringify(application)
     );
+
+    // Go to payment page
 
     window.location.href = "payment.html";
 
