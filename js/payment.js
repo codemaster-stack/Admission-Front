@@ -174,7 +174,7 @@ FlutterwaveCheckout({
         console.log("Sending request to verify endpoint...");
 
         const response = await fetch(
-            "http://localhost:5000/api/payments/verify",
+            "https://admission-api-r5y6.onrender.com/api/payments/verify",
             {
                 method: "POST",
                 headers: {

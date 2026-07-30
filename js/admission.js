@@ -24,7 +24,7 @@ async function loadCountries() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/schools/countries"
+            "https://admission-api-r5y6.onrender.com/api/schools/countries"
         );
 
         const countries = await response.json();
@@ -74,7 +74,7 @@ async function loadSchools(country = "") {
             </option>
         `;
 
-        let url = "http://localhost:5000/api/schools";
+        let url = "https://admission-api-r5y6.onrender.com/api/schools";
 
         if (country) {
 
@@ -351,7 +351,7 @@ async function loadFaculties() {
     if (!schoolId) return;
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/faculties/${schoolId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/faculties/${schoolId}`
     );
 
     const faculties = await response.json();
@@ -379,7 +379,7 @@ async function loadDepartments() {
     if (!facultyId) return;
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/departments/${facultyId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/departments/${facultyId}`
     );
 
     const departments = await response.json();
@@ -408,7 +408,7 @@ async function loadProgrammes() {
     if (!departmentId) return;
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/programmes/${departmentId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/programmes/${departmentId}`
     );
 
     const programmes = await response.json();

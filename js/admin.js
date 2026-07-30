@@ -34,7 +34,7 @@ async function loadSchools() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/schools"
+            "https://admission-api-r5y6.onrender.com/api/schools"
         );
 
         const schools = await response.json();
@@ -85,7 +85,7 @@ async function loadSchools() {
 
         console.log("loadFacultyManager started");
 
-        const response = await fetch("http://localhost:5000/api/schools");
+        const response = await fetch("https://admission-api-r5y6.onrender.com/api/schools");
         console.log("Fetch completed");
 
         const schools = await response.json();
@@ -134,7 +134,7 @@ async function loadDepartmentManager() {
 
     console.log("Department manager started");
 
-    const response = await fetch("http://localhost:5000/api/schools");
+    const response = await fetch("https://admission-api-r5y6.onrender.com/api/schools");
 
     console.log(response.status);
 
@@ -188,7 +188,7 @@ async function loadDepartmentFaculties() {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/faculties/${schoolId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/faculties/${schoolId}`
     );
 
     const faculties = await response.json();
@@ -239,7 +239,7 @@ async function saveDepartment() {
         }
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/departments",
+            "https://admission-api-r5y6.onrender.com/api/admin/departments",
             {
                 method: "POST",
                 headers: {
@@ -295,7 +295,7 @@ async function loadDepartments() {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/departments/${facultyId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/departments/${facultyId}`
     );
 
     const departments = await response.json();
@@ -335,7 +335,7 @@ async function editDepartment(id, currentName) {
     if (!newName) return;
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/departments/${id}`,
+        `https://admission-api-r5y6.onrender.com/api/admin/departments/${id}`,
         {
             method: "PUT",
             headers: {
@@ -372,7 +372,7 @@ async function deleteDepartment(id) {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/departments/${id}`,
+        `https://admission-api-r5y6.onrender.com/api/admin/departments/${id}`,
         {
             method: "DELETE"
         }
@@ -408,7 +408,7 @@ async function loadFaculties() {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/faculties/${schoolId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/faculties/${schoolId}`
     );
 
     const faculties = await response.json();
@@ -467,7 +467,7 @@ async function saveFaculty() {
         }
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/faculties",
+            "https://admission-api-r5y6.onrender.com/api/admin/faculties",
             {
                 method: "POST",
                 headers: {
@@ -519,7 +519,7 @@ async function deleteFaculty(id) {
 
     const response = await fetch(
 
-        `http://localhost:5000/api/admin/faculties/${id}`,
+        `https://admission-api-r5y6.onrender.com/api/admin/faculties/${id}`,
 
         {
 
@@ -551,7 +551,7 @@ async function editFaculty(id, currentName) {
     if (!newName) return;
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/faculties/${id}`,
+        `https://admission-api-r5y6.onrender.com/api/admin/faculties/${id}`,
         {
             method: "PUT",
             headers: {
@@ -580,7 +580,7 @@ async function editFaculty(id, currentName) {
 
 async function loadProgrammeManager() {
 
-    const response = await fetch("http://localhost:5000/api/schools");
+    const response = await fetch("https://admission-api-r5y6.onrender.com/api/schools");
 
     const schools = await response.json();
 
@@ -628,7 +628,7 @@ async function loadProgrammeFaculties() {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/faculties/${schoolId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/faculties/${schoolId}`
     );
 
     const faculties = await response.json();
@@ -671,7 +671,7 @@ async function loadProgrammeDepartments() {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/departments/${facultyId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/departments/${facultyId}`
     );
 
     const departments = await response.json();
@@ -712,7 +712,7 @@ async function loadProgrammes() {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/programmes/${departmentId}`
+        `https://admission-api-r5y6.onrender.com/api/admin/programmes/${departmentId}`
     );
 
     const programmes = await response.json();
@@ -783,7 +783,7 @@ async function saveProgramme() {
         }
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/programmes",
+            "https://admission-api-r5y6.onrender.com/api/admin/programmes",
             {
                 method: "POST",
                 headers: {
@@ -835,7 +835,7 @@ async function editProgramme(id) {
     if (!newName) return;
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/programmes/${id}`,
+        `https://admission-api-r5y6.onrender.com/api/admin/programmes/${id}`,
         {
             method: "PUT",
             headers: {
@@ -871,7 +871,7 @@ async function deleteProgramme(id) {
     }
 
     const response = await fetch(
-        `http://localhost:5000/api/admin/programmes/${id}`,
+        `https://admission-api-r5y6.onrender.com/api/admin/programmes/${id}`,
         {
             method: "DELETE"
         }
