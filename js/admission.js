@@ -1,12 +1,3 @@
-/* ===========================================
-   CAMPUSHUB ADMISSIONS WIZARD
-=========================================== */
-
-
-// ------------------------------
-// HTML ELEMENTS
-// ------------------------------
-
 const countrySelect = document.getElementById("country");
 const schoolSelect = document.getElementById("school");
 const facultySelect = document.getElementById("faculty");
@@ -35,7 +26,7 @@ function stopLoading(buttonId, text) {
     btn.disabled = false;
     btn.innerHTML = text;
 }
-if (!btn) return;
+
 // ------------------------------
 // LOAD SCHOOLS FROM API
 // ------------------------------
