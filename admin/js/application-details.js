@@ -100,6 +100,80 @@ ${app.graduationYear}</p>
 
 <hr>
 
+<h3>Uploaded Documents</h3>
+
+<div class="documents-section">
+
+    <div class="document-card">
+
+        <h4>Passport Photograph</h4>
+
+        ${
+            app.passport
+            ?
+
+            `
+            <img
+                src="${app.passport}"
+                alt="Passport"
+                style="
+                    width:180px;
+                    border-radius:8px;
+                    border:1px solid #ddd;
+                    margin:10px 0;
+                ">
+
+            <br>
+
+            <a
+                href="${app.passport}"
+                target="_blank"
+                class="view-btn">
+
+                View Full Image
+
+            </a>
+            `
+
+            :
+
+            "<p>No passport uploaded.</p>"
+        }
+
+    </div>
+
+    <hr>
+
+    <div class="document-card">
+
+        <h4>Academic Result</h4>
+
+        ${
+            app.result
+            ?
+
+            `
+            <a
+                href="${app.result}"
+                target="_blank"
+                class="view-btn">
+
+                Open Academic Result
+
+            </a>
+            `
+
+            :
+
+            "<p>No academic result uploaded.</p>"
+        }
+
+    </div>
+
+</div>
+
+<hr>
+
 <h3>Payment</h3>
 
 <p><strong>Amount:</strong>
@@ -112,6 +186,19 @@ ${app.paymentMethod}</p>
 ${app.transactionId}</p>
 
 <hr>
+
+<h3>Admin Remark</h3>
+
+<textarea
+id="adminRemark"
+rows="5"
+placeholder="Enter remark for this application...">
+
+${app.adminRemark || ""}
+
+</textarea>
+
+<br><br>
 
 <button
 class="approve-btn"
@@ -163,11 +250,14 @@ async function updateStatus(status) {
 
                 },
 
-                body: JSON.stringify({
+              body: JSON.stringify({
 
-                    applicationStatus: status
+    applicationStatus: status,
 
-                })
+    adminRemark:
+        document.getElementById("adminRemark").value
+
+})
 
             }
 

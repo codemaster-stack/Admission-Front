@@ -338,13 +338,6 @@ function getApplicationData() {
 
         graduationYear: document.getElementById("graduationYear").value,
 
-        // Documents
-
-        passport:
-            document.getElementById("passport").files[0]?.name || "",
-
-        result:
-            document.getElementById("result").files[0]?.name || "",
 
         // Payment
 
@@ -395,6 +388,24 @@ async function submitApplication() {
 
     const application = getApplicationData();
 
+    const formData = new FormData();
+
+Object.entries(application).forEach(([key, value]) => {
+
+    formData.append(key, value);
+
+});
+
+formData.append(
+    "passport",
+    document.getElementById("passport").files[0]
+);
+
+formData.append(
+    "result",
+    document.getElementById("result").files[0]
+);
+
     // ------------------------------
     // Validate Required Fields
     // ------------------------------
@@ -432,15 +443,71 @@ async function submitApplication() {
     // ------------------------------
     // Save Application
     // ------------------------------
+    try {
 
-    localStorage.setItem(
-        "campushubAdmission",
-        JSON.stringify(application)
+    const response = await fetch(
+
+        "https://admission-api-r5y6.onrender.com/api/admissions",
+
+        {
+
+            method: "POST",
+
+            body: formData
+
+        }
+
     );
 
-    // Go to payment page
+    const result = await response.json();
+
+    if (!result.success) {
+
+        alert(result.message);
+
+        stopLoading("nextBtn", "Proceed to Payment");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+
+        "applicationId",
+
+        result.application._id
+
+    );
+    localStorage.setItem(
+    "paymentCustomer",
+    JSON.stringify({
+
+        firstName: application.firstName,
+
+        lastName: application.lastName,
+
+        email: application.email,
+
+        phone: application.phone
+
+    })
+);
+
+stopLoading("nextBtn", "Proceed to Payment");
 
     window.location.href = "payment.html";
+
+}
+
+catch(error){
+
+    console.error(error);
+
+    alert("Unable to submit application.");
+
+    stopLoading("nextBtn","Proceed to Payment");
+
+}
 
 }
 

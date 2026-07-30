@@ -2,251 +2,262 @@
    CAMPUSHUB FLUTTERWAVE PAYMENT
 =========================================== */
 
+const applicationId = localStorage.getItem("applicationId");
 
-const application = JSON.parse(
-
-    localStorage.getItem("campushubAdmission")
-
+const customer = JSON.parse(
+    localStorage.getItem("paymentCustomer")
 );
 
+if (!applicationId || !customer) {
 
-
-if(!application){
-
-    alert("No admission application found.");
+    alert("Application not found.");
 
     window.location.href = "index.html";
 
 }
 
-
-
-// ------------------------------
-// COUNTRY CURRENCY SETTINGS
-// ------------------------------
+let application = null;
 
 const currencyMap = {
 
+    "Nigeria": "NGN",
 
-    "Nigeria":"NGN",
+    "Ghana": "GHS",
 
-    "Ghana":"GHS",
+    "Kenya": "KES",
 
-    "Kenya":"KES",
+    "South Africa": "ZAR",
 
-    "South Africa":"ZAR",
+    "United Kingdom": "GBP",
 
-    "United Kingdom":"GBP",
+    "United States": "USD",
 
-    "United States":"USD",
+    "Canada": "CAD",
 
-    "Canada":"CAD",
+    "Australia": "AUD",
 
-    "Australia":"AUD",
-
-    "India":"INR"
-
+    "India": "INR"
 
 };
 
+// ------------------------------------
+// LOAD APPLICATION FROM DATABASE
+// ------------------------------------
 
+async function loadApplication() {
 
-const currency =
+    try {
 
-currencyMap[application.country] || "USD";
+        const response = await fetch(
 
+            `https://admission-api-r5y6.onrender.com/api/admissions/${applicationId}`
 
+        );
 
+        const data = await response.json();
 
+        if (!data.success) {
 
-const amount = application.amount;
+            alert(data.message);
 
+            window.location.href = "index.html";
 
+            return;
 
-document.getElementById("amount").innerHTML =
+        }
 
-`${amount}`;
+        application = data.application;
 
+        const currency =
+            currencyMap[application.country] || "USD";
 
+        document.getElementById("amount").textContent =
+            application.amount;
 
-document.getElementById("currency").innerHTML =
+        document.getElementById("currency").textContent =
+            currency;
 
-currency;
+    }
 
+    catch (error) {
+
+        console.error(error);
+
+        alert("Unable to load application.");
+
+    }
+
+}
+
+loadApplication();
+
+// ------------------------------------
+// PAYMENT
+// ------------------------------------
 
 document
-
 .getElementById("payButton")
+.addEventListener("click", function () {
 
-.addEventListener("click",()=>{
+    if (!application) {
 
-
-FlutterwaveCheckout({
-
-
-    public_key:
-
-    "FLWPUBK_TEST-b557be59f1b553143efee33d3f7831be-X",
-
-
-    tx_ref:
-
-    "CAMPUSHUB-" + Date.now(),
-
-
-    amount: amount,
-
-
-    currency: currency,
-
-
-    payment_options:
-
-    "card,banktransfer,ussd",
-
-
-
-    customer:{
-
-
-        email:
-
-        application.email,
-
-
-        phone_number:
-
-        application.phone,
-
-
-        name:
-
-        application.firstName +
-
-        " " +
-
-        application.lastName
-
-
-    },
-
-
-
-    customizations:{
-
-
-        title:
-
-        "CampusHub Admissions",
-
-
-        description:
-
-        "University Admission Application Fee",
-
-
-        logo:
-
-        "images/logo.png"
-
-
-    },
-
-
-
- callback: async function (payment) {
-
-    console.log("========== CALLBACK START ==========");
-    console.log(payment);
-
-    if (payment.status !== "successful") {
-
-        console.log("Payment not successful");
+        alert("Application not loaded.");
 
         return;
 
     }
 
-    console.log("About to call backend...");
+    const currency =
+        currencyMap[application.country] || "USD";
 
-    try {
+    FlutterwaveCheckout({
 
-        console.log("Sending request to verify endpoint...");
+        public_key:
 
-       const response = await fetch(
-    "https://admission-api-r5y6.onrender.com/api/payments/verify",
-    {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+        "FLWPUBK_TEST-b557be59f1b553143efee33d3f7831be-X",
+
+        tx_ref:
+
+        "CAMPUSHUB-" + Date.now(),
+
+        amount:
+
+        application.amount,
+
+        currency:
+
+        currency,
+
+        payment_options:
+
+        "card,banktransfer,ussd",
+
+        customer: {
+
+            email:
+
+            customer.email,
+
+            phone_number:
+
+            customer.phone,
+
+            name:
+
+            customer.firstName +
+
+            " " +
+
+            customer.lastName
+
         },
-        body: JSON.stringify({
-            transaction_id: payment.transaction_id,
-            application
-        })
-    }
-);
 
-console.log("Response received:", response.status);
+        customizations: {
 
-const result = await response.json();
+            title:
 
-console.log(result);
+            "CampusHub Admissions",
 
-if (!response.ok) {
+            description:
 
-    alert(result.message || "Payment verification failed.");
+            "University Admission Application Fee",
 
-    return;
+            logo:
 
-}
+            "images/logo.png"
 
-if (result.success) {
+        },
 
-    localStorage.setItem(
-        "flutterwavePayment",
-        JSON.stringify(payment)
-    );
+        callback: async function (payment) {
 
-    localStorage.setItem(
-        "applicationNumber",
-        result.application.applicationNumber
-    );
+            if (payment.status !== "successful") {
 
-    window.location.href = "success.html";
+                alert("Payment was not successful.");
 
-} else {
+                return;
 
-    alert(result.message || "Payment verification failed.");
+            }
 
-}
+            try {
 
-    } catch (error) {
+                const response = await fetch(
 
-        console.error(error);
-        alert("Unable to verify payment.");
+                    "https://admission-api-r5y6.onrender.com/api/payments/verify",
 
-    }
+                    {
 
-},
+                        method: "POST",
 
+                        headers: {
 
+                            "Content-Type": "application/json"
 
-    onclose:function(){
+                        },
 
+                        body: JSON.stringify({
 
-        console.log(
+                            transaction_id:
 
-        "Payment cancelled"
+                            payment.transaction_id,
 
-        );
+                            applicationId
 
+                        })
 
-    }
+                    }
 
+                );
 
-});
+                const result =
+                    await response.json();
 
+                if (!response.ok) {
 
+                    alert(
+
+                        result.message ||
+
+                        "Payment verification failed."
+
+                    );
+
+                    return;
+
+                }
+
+                localStorage.setItem(
+
+                    "applicationNumber",
+
+                    result.application.applicationNumber
+
+                );
+
+                localStorage.removeItem("paymentCustomer");
+
+                localStorage.removeItem("applicationId");
+
+                window.location.href =
+                    "success.html";
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                alert("Unable to verify payment.");
+
+            }
+
+        },
+
+        onclose: function () {
+
+            console.log("Payment cancelled.");
+
+        }
+
+    });
 
 });

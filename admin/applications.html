@@ -19,6 +19,57 @@
 
 <h1>Applications</h1>
 
+<div class="dashboard-cards">
+
+    <div class="card">
+        <h2 id="totalApplications">0</h2>
+        <p>Total Applications</p>
+    </div>
+
+    <div class="card">
+        <h2 id="submittedApplications">0</h2>
+        <p>Submitted</p>
+    </div>
+
+    <div class="card">
+        <h2 id="approvedApplications">0</h2>
+        <p>Approved</p>
+    </div>
+
+    <div class="card">
+        <h2 id="rejectedApplications">0</h2>
+        <p>Rejected</p>
+    </div>
+
+    <div class="card">
+        <h2 id="paidApplications">0</h2>
+        <p>Paid</p>
+    </div>
+
+</div>
+
+ 
+<div class="table-toolbar">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by application number, name or email...">
+
+    <select id="statusFilter">
+
+        <option value="All">All Status</option>
+
+        <option value="Submitted">Submitted</option>
+
+        <option value="Approved">Approved</option>
+
+        <option value="Rejected">Rejected</option>
+
+    </select>
+
+</div>
+
 <table id="applicationsTable">
 
 <thead>
@@ -52,6 +103,7 @@
 </div>
 
 <script src="js/applications.js"></script>
+
 
 </body>
 
