@@ -15,6 +15,27 @@ const programmeSelect = document.getElementById("programme");
 const institutionTypeSelect =
 document.getElementById("institutionType");
 
+function startLoading(buttonId, text) {
+    const btn = document.getElementById(buttonId);
+
+    if (!btn) return;
+
+    btn.disabled = true;
+    btn.innerHTML = `
+        <span class="spinner"></span>
+        ${text}
+    `;
+}
+
+function stopLoading(buttonId, text) {
+    const btn = document.getElementById(buttonId);
+
+    if (!btn) return;
+
+    btn.disabled = false;
+    btn.innerHTML = text;
+}
+if (!btn) return;
 // ------------------------------
 // LOAD SCHOOLS FROM API
 // ------------------------------
@@ -307,7 +328,7 @@ function getApplicationData() {
 
 async function submitApplication() {
 
-    startLoading("submitApplication", "Submitting...");
+    startLoading("nextBtn", "Submitting...");
 
     const application = getApplicationData();
 
