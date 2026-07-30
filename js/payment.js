@@ -173,40 +173,35 @@ FlutterwaveCheckout({
 
         console.log("Sending request to verify endpoint...");
 
-        const response = await fetch(
-            "https://admission-api-r5y6.onrender.com/api/payments/verify",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    transaction_id: payment.transaction_id,
-                    application
-                })
-            }
-        );
+       const response = await fetch(
+    "https://admission-api-r5y6.onrender.com/api/payments/verify",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            transaction_id: payment.transaction_id,
+            application
+        })
+    }
+);
 
-        console.log("Response received:", response.status);
+console.log("Response received:", response.status);
 
-        const result = await response.json();
+const result = await response.json();
 
-        console.log(result);
+console.log(result);
 
+if (!response.ok) {
 
-        if (!response.ok) {
-
-    const error = await response.json();
-
-    alert(error.message || "Payment verification failed.");
+    alert(result.message || "Payment verification failed.");
 
     return;
 
 }
 
-const result = await response.json();
-
-       if (result.success) {
+if (result.success) {
 
     localStorage.setItem(
         "flutterwavePayment",
@@ -220,11 +215,11 @@ const result = await response.json();
 
     window.location.href = "success.html";
 
-       } else {
+} else {
 
-            alert("Payment verification failed.");
+    alert(result.message || "Payment verification failed.");
 
-        }
+}
 
     } catch (error) {
 
