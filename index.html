@@ -2,535 +2,464 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CampusHub Admissions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/admission.css">
+<title>CampusHub Study | Admissions Portal</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-   <link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+<link rel="stylesheet" href="css/home.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
+<!-- ===========================
+     HEADER
+=========================== -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<img src="images/logo.png" alt="CampusHub Logo">
+
+<span>CampusHub Study</span>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#schools">Schools</a></li>
+
+<li><a href="#programmes">Programmes</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="nav-buttons">
+
+<a href="track.html" class="track-btn">
+
+Track Application
+
+</a>
+
+<a href="apply.html" class="apply-btn">
+
+Apply Now
+
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- ===========================
+     HERO
+=========================== -->
+
+<section class="hero">
+
 <div class="overlay"></div>
 
-<div class="container">
+<div class="hero-content">
 
-    <!-- LEFT PANEL -->
+<h1>
 
-    <aside class="sidebar">
+Shape Your Future With CampusHub
 
-        <img src="images/logo.png" class="logo">
+</h1>
 
-        <h1>CampusHub</h1>
+<p>
 
-        <p>
-            Global Admissions Portal
-        </p>
+Admissions are now open for the 2026 / 2027 Academic Session.
 
-        <div class="steps">
+Begin your journey toward academic excellence today.
 
-            <div class="step active">
-                <div class="number">1</div>
-                <span>Choose Destination</span>
-            </div>
+</p>
 
-            <div class="step">
-                <div class="number">2</div>
-                <span>Programme</span>
-            </div>
+<div class="hero-buttons">
 
-            <div class="step">
-                <div class="number">3</div>
-                <span>Personal Details</span>
-            </div>
+<a href="apply.html" class="primary-btn">
 
-            <div class="step">
-                <div class="number">4</div>
-                <span>Guardian</span>
-            </div>
+Apply Now
 
-            <div class="step">
-                <div class="number">5</div>
-                <span>Education</span>
-            </div>
+</a>
 
-            <div class="step">
-                <div class="number">6</div>
-                <span>Documents</span>
-            </div>
+<a href="track.html" class="secondary-btn">
 
-            <div class="step">
-                <div class="number">7</div>
-                <span>Review</span>
-            </div>
+Track Application
 
-            <div class="step">
-                <div class="number">8</div>
-                <span>Payment</span>
-            </div>
+</a>
 
-        </div>
+</div>
 
-    </aside>
+</div>
 
-    <!-- RIGHT PANEL -->
+</section>
 
-    <main class="content">
+<!-- ===========================
+     ABOUT
+=========================== -->
 
-        <div class="card">
+<section class="about" id="about">
 
-            <h2>University Admission</h2>
+<div class="about-image">
 
-            <p class="subtitle">
-                Begin your admission application.
+<img src="images/students.jpg" alt="Students">
+
+</div>
+
+<div class="about-text">
+
+<h2>
+
+About CampusHub
+
+</h2>
+
+<p>
+
+CampusHub Study is a modern online admission platform built to simplify
+student admissions while giving institutions powerful tools to manage
+schools, faculties, departments, programmes and applications from one
+centralized dashboard.
+
+</p>
+
+<div class="features">
+
+<div>
+
+✅ Secure Online Application
+
+</div>
+
+<div>
+
+✅ Online Payment
+
+</div>
+
+<div>
+
+✅ Real-time Application Tracking
+
+</div>
+
+<div>
+
+✅ Fast Admission Processing
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     WHY CHOOSE US
+=========================== -->
+
+<section class="why-us">
+
+    <h2>Why Choose CampusHub?</h2>
+
+    <p class="section-text">
+
+        Everything you need for a seamless admission experience.
+
+    </p>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <div class="icon">🎓</div>
+
+            <h3>Quality Education</h3>
+
+            <p>
+                Accredited programmes delivered by experienced lecturers.
             </p>
 
-           <form id="admissionForm">
+        </div>
 
-   <!-- STEP 1 -->
+        <div class="why-card">
 
-<div class="form-step active" id="step1">
+            <div class="icon">💻</div>
 
-    <!-- Country -->
+            <h3>Digital Admission</h3>
 
-    <div class="field">
-
-        <label>Country</label>
-
-        <select id="country">
-
-            <option value="">
-                Choose Destination
-            </option>
-
-        </select>
-
-    </div>
-
-    <!-- Institution Type -->
-
-    <div class="field">
-
-        <label>Institution Type</label>
-
-        <select id="institutionType">
-
-            <option value="">
-                Choose Institution Type
-            </option>
-
-            <option value="University">University</option>
-
-            <option value="Polytechnic">Polytechnic</option>
-
-            <option value="College">College</option>
-
-            <option value="Vocational School">Vocational School</option>
-
-            <option value="Language School">Language School</option>
-
-        </select>
-
-    </div>
-
-    <!-- Institution -->
-
-    <div class="field">
-
-        <label>Select Institution</label>
-
-        <select id="school" disabled>
-
-            <option value="">
-                Choose Institution
-            </option>
-
-        </select>
-
-    </div>
-
-    <!-- Admission Session -->
-
-    <div class="field">
-
-        <label>Admission Session</label>
-
-        <select id="session">
-
-            <option>2026 / 2027</option>
-
-            <option>2027 / 2028</option>
-
-            <option>2028 / 2029</option>
-
-        </select>
-
-    </div>
-
-</div>
-
-
-
-    <!-- STEP 2 -->
-
-    <div class="form-step" id="step2">
-
-        <div class="field">
-
-            <label>Faculty</label>
-
-            <select id="faculty">
-
-                <option>Select Faculty</option>
-
-            </select>
+            <p>
+                Apply online anytime from anywhere in the world.
+            </p>
 
         </div>
 
-        <div class="field">
+        <div class="why-card">
 
-            <label>Department</label>
+            <div class="icon">🌍</div>
 
-            <select id="department">
+            <h3>Global Community</h3>
 
-                <option>Select Department</option>
-
-            </select>
+            <p>
+                Join students from different countries and backgrounds.
+            </p>
 
         </div>
 
-        <div class="field">
+        <div class="why-card">
 
-            <label>Programme</label>
+            <div class="icon">💼</div>
 
-            <select id="programme">
+            <h3>Career Ready</h3>
 
-                <option>Select Programme</option>
-
-            </select>
+            <p>
+                Gain practical knowledge that prepares you for your future.
+            </p>
 
         </div>
 
     </div>
 
+</section>
 
+<!-- ===========================
+     STATISTICS
+=========================== -->
 
-    <!-- STEP 3 -->
+<section class="stats">
 
-    <div class="form-step" id="step3">
+    <div class="stat-card">
 
-        <div class="field">
+        <h2 id="schoolCount">0</h2>
 
-            <label>First Name</label>
-
-            <input type="text" id="firstName">
-
-        </div>
-
-        <div class="field">
-
-            <label>Last Name</label>
-
-            <input type="text" id="lastName">
-
-        </div>
-
-        <div class="field">
-
-            <label>Email Address</label>
-
-            <input type="email" id="email">
-
-        </div>
-
-        <div class="field">
-
-            <label>Phone Number</label>
-
-            <input
-               type="tel"
-               id="phone"
-               autocomplete="tel"
-               placeholder="Enter phone number"
-               required
-              >
-
-        </div>
+        <p>Schools</p>
 
     </div>
 
-        <!-- STEP 4 GUARDIAN -->
+    <div class="stat-card">
 
-    <div class="form-step" id="step4">
+        <h2 id="programmeCount">0</h2>
 
-
-        <div class="field">
-
-               <label>Guardian Full Name</label>
-
-               <input 
-               type="text"
-               id="guardianName">
-
-         </div>
-
-
-       <div class="field">
-          <label>Guardian Phone</label>
-          <input
-                  type="tel"
-                  id="guardianPhone"
-                  autocomplete="tel"
-                  placeholder="Enter guardian phone number"
-                  required
-                  >
-      </div>
-
-
-      <div class="field">
-
-         <label>Relationship</label>
-
-            <select id="guardianRelation">
-
-              <option>Father</option>
-              <option>Mother</option>
-              <option>Sibling</option>
-              <option>Other</option>
-
-            </select>
-
-       </div>
-
+        <p>Programmes</p>
 
     </div>
 
+    <div class="stat-card">
 
+        <h2 id="applicationCount">0</h2>
 
-
-    <!-- STEP 5 EDUCATION -->
-
-
-   <div class="form-step" id="step5">
-
-    <!-- Previous School -->
-
-    <div class="field">
-
-        <label>Previous School</label>
-
-        <input
-            type="text"
-            id="previousSchool"
-            placeholder="Enter the name of your previous school">
+        <p>Applications</p>
 
     </div>
 
-    <!-- Highest Qualification -->
+    <div class="stat-card">
 
-    <div class="field">
+        <h2>100%</h2>
 
-        <label>Highest Qualification</label>
-
-        <select id="qualification">
-
-            <option value="">Select Highest Qualification</option>
-
-            <option>Secondary / High School Certificate</option>
-
-            <option>High School Diploma</option>
-
-            <option>Foundation Programme / Pre-University</option>
-
-            <option>Diploma</option>
-
-            <option>Advanced Diploma</option>
-
-            <option>Associate Degree</option>
-
-            <option>Bachelor's Degree</option>
-
-            <option>Postgraduate Diploma</option>
-
-            <option>Master's Degree</option>
-
-            <option>Doctorate (PhD)</option>
-
-            <option>Professional Qualification</option>
-
-            <option>Other</option>
-
-        </select>
+        <p>Online Admission</p>
 
     </div>
 
-    <!-- Qualification / Examination Name -->
+</section>
 
-    <div class="field">
+<!-- ===========================
+     FEATURED SCHOOLS
+=========================== -->
 
-        <label>Qualification / Examination Name</label>
+<section class="schools" id="schools">
 
-        <input
-            type="text"
-            id="qualificationName"
-            placeholder="e.g. WAEC, KCSE, A-Level, IB Diploma, National Senior Certificate">
+    <h2>Featured Schools</h2>
 
-    </div>
+    <p class="section-text">
 
-    <!-- Graduation Year -->
+        Explore our academic schools.
 
-    <div class="field">
+    </p>
 
-        <label>Graduation Year</label>
-
-        <input
-            type="number"
-            id="graduationYear"
-            placeholder="e.g. 2024">
+    <div id="schoolCards" class="school-grid">
 
     </div>
 
-</div>
+</section>
 
+        <!-- ===========================
+     FEATURED PROGRAMMES
+=========================== -->
 
+<section class="programmes" id="programmes">
 
+    <h2>Featured Programmes</h2>
 
+    <p class="section-text">
 
-   <!-- STEP 6 DOCUMENTS -->
+        Explore some of our most popular academic programmes.
 
+    </p>
 
-    <div class="form-step" id="step6">
-
-
-      <div class="field">
-
-        <label>Passport Photograph</label>
-
-        <input 
-        type="file"
-        id="passport">
-
-      </div>
-
-
-
-      <div class="field">
-
-        <label>Academic Result</label>
-
-        <input 
-        type="file"
-        id="result">
-
-      </div>
-
-
+    <div id="programmeCards" class="programme-grid">
 
     </div>
 
+</section>
 
+<!-- ===========================
+     CALL TO ACTION
+=========================== -->
 
+<section class="cta">
 
+    <h2>
 
-   <!-- STEP 7 REVIEW -->
+        Ready to Begin Your Academic Journey?
 
+    </h2>
 
-    <div class="form-step" id="step7">
+    <p>
 
+        Applications are now open for the new academic session.
 
-       <h3>
-         Application Summary
-       </h3>
+    </p>
 
+    <a href="apply.html" class="primary-btn">
 
-        <div id="reviewBox">
+        Apply Now
 
-          Your information will appear here.
+    </a>
 
-        </div>
+</section>
 
+<!-- ===========================
+TESTIMONIALS
+=========================== -->
 
-    </div>
+<section class="testimonials">
 
+    <h2>What Our Students Say</h2>
 
+    <div class="testimonial-container">
 
-
-
-  <!-- STEP 8 PAYMENT -->
-
-
-   <div class="form-step" id="step8">
-
-
-        <div class="payment-box">
-
-
-           <h3>
-             Application Fee
-           </h3>
-
-
-            <h1 id="amount">
-
-             $25
-
-            </h1>
-
+        <div class="testimonial">
 
             <p>
 
-              Secure payment powered by Flutterwave
+                "CampusHub made my admission process simple and stress-free."
 
             </p>
 
-        </div>
-            <button
-                 type="button"
-                 id="payButton"
-                 class="btn"
->
-                Pay Application Fee →
-            </button>
-
-    </div>
-
-    <div class="buttons">
-
-        <button
-            type="button"
-            id="prevBtn"
-            class="btn secondary"
-            style="display:none;"
-        >
-            ← Previous
-        </button>
-
-        <button
-            type="button"
-            id="nextBtn"
-            class="btn"
-        >
-            Next →
-        </button>
-
-    </div>
-
-</form>
+            <h4>— John Michael</h4>
 
         </div>
 
-    </main>
+        <div class="testimonial">
 
-</div>
+            <p>
 
-<script src="https://checkout.flutterwave.com/v3.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
-<script src="js/admission.js"></script>
+                "The online application and tracking system is excellent."
+
+            </p>
+
+            <h4>— Sarah James</h4>
+
+        </div>
+
+        <div class="testimonial">
+
+            <p>
+
+                "Everything was completed online without visiting campus."
+
+            </p>
+
+            <h4>— David Wilson</h4>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+CONTACT
+=========================== -->
+
+<section class="contact" id="contact">
+
+    <h2>Contact Us</h2>
+
+    <div class="contact-grid">
+
+        <div>
+
+            <h3>Address</h3>
+
+            <p>Your Campus Address</p>
+
+        </div>
+
+        <div>
+
+            <h3>Email</h3>
+
+            <p>info@campushub.edu</p>
+
+        </div>
+
+        <div>
+
+            <h3>Phone</h3>
+
+            <p>+234 XXX XXX XXXX</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+FOOTER
+=========================== -->
+
+<footer>
+
+    <div class="footer-logo">
+
+        <img src="images/logo.png">
+
+        <h3>CampusHub Study</h3>
+
+    </div>
+
+    <p>
+
+        © 2026 CampusHub Study. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+<script src="js/home.js"></script>
 
 </body>
+
 </html>

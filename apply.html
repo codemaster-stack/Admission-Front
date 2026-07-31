@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusHub Admissions</title>
+
+    <link rel="stylesheet" href="css/admission.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <!-- LEFT PANEL -->
+
+    <aside class="sidebar">
+
+        <img src="images/logo.png" class="logo">
+
+        <h1>CampusHub</h1>
+
+        <p>
+            Global Admissions Portal
+        </p>
+
+        <div class="steps">
+
+            <div class="step active">
+                <div class="number">1</div>
+                <span>Choose Destination</span>
+            </div>
+
+            <div class="step">
+                <div class="number">2</div>
+                <span>Programme</span>
+            </div>
+
+            <div class="step">
+                <div class="number">3</div>
+                <span>Personal Details</span>
+            </div>
+
+            <div class="step">
+                <div class="number">4</div>
+                <span>Guardian</span>
+            </div>
+
+            <div class="step">
+                <div class="number">5</div>
+                <span>Education</span>
+            </div>
+
+            <div class="step">
+                <div class="number">6</div>
+                <span>Documents</span>
+            </div>
+
+            <div class="step">
+                <div class="number">7</div>
+                <span>Review</span>
+            </div>
+
+            <div class="step">
+                <div class="number">8</div>
+                <span>Payment</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- RIGHT PANEL -->
+
+    <main class="content">
+
+        <div class="card">
+
+            <h2>University Admission</h2>
+
+            <p class="subtitle">
+                Begin your admission application.
+            </p>
+
+           <form id="admissionForm">
+
+   <!-- STEP 1 -->
+
+<div class="form-step active" id="step1">
+
+    <!-- Country -->
+
+    <div class="field">
+
+        <label>Country</label>
+
+        <select id="country">
+
+            <option value="">
+                Choose Destination
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- Institution Type -->
+
+    <div class="field">
+
+        <label>Institution Type</label>
+
+        <select id="institutionType">
+
+            <option value="">
+                Choose Institution Type
+            </option>
+
+            <option value="University">University</option>
+
+            <option value="Polytechnic">Polytechnic</option>
+
+            <option value="College">College</option>
+
+            <option value="Vocational School">Vocational School</option>
+
+            <option value="Language School">Language School</option>
+
+        </select>
+
+    </div>
+
+    <!-- Institution -->
+
+    <div class="field">
+
+        <label>Select Institution</label>
+
+        <select id="school" disabled>
+
+            <option value="">
+                Choose Institution
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- Admission Session -->
+
+    <div class="field">
+
+        <label>Admission Session</label>
+
+        <select id="session">
+
+            <option>2026 / 2027</option>
+
+            <option>2027 / 2028</option>
+
+            <option>2028 / 2029</option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+
+    <!-- STEP 2 -->
+
+    <div class="form-step" id="step2">
+
+        <div class="field">
+
+            <label>Faculty</label>
+
+            <select id="faculty">
+
+                <option>Select Faculty</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Department</label>
+
+            <select id="department">
+
+                <option>Select Department</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Programme</label>
+
+            <select id="programme">
+
+                <option>Select Programme</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- STEP 3 -->
+
+    <div class="form-step" id="step3">
+
+        <div class="field">
+
+            <label>First Name</label>
+
+            <input type="text" id="firstName">
+
+        </div>
+
+        <div class="field">
+
+            <label>Last Name</label>
+
+            <input type="text" id="lastName">
+
+        </div>
+
+        <div class="field">
+
+            <label>Email Address</label>
+
+            <input type="email" id="email">
+
+        </div>
+
+        <div class="field">
+
+            <label>Phone Number</label>
+
+            <input
+               type="tel"
+               id="phone"
+               autocomplete="tel"
+               placeholder="Enter phone number"
+               required
+              >
+
+        </div>
+
+    </div>
+
+        <!-- STEP 4 GUARDIAN -->
+
+    <div class="form-step" id="step4">
+
+
+        <div class="field">
+
+               <label>Guardian Full Name</label>
+
+               <input 
+               type="text"
+               id="guardianName">
+
+         </div>
+
+
+       <div class="field">
+          <label>Guardian Phone</label>
+          <input
+                  type="tel"
+                  id="guardianPhone"
+                  autocomplete="tel"
+                  placeholder="Enter guardian phone number"
+                  required
+                  >
+      </div>
+
+
+      <div class="field">
+
+         <label>Relationship</label>
+
+            <select id="guardianRelation">
+
+              <option>Father</option>
+              <option>Mother</option>
+              <option>Sibling</option>
+              <option>Other</option>
+
+            </select>
+
+       </div>
+
+
+    </div>
+
+
+
+
+    <!-- STEP 5 EDUCATION -->
+
+
+   <div class="form-step" id="step5">
+
+    <!-- Previous School -->
+
+    <div class="field">
+
+        <label>Previous School</label>
+
+        <input
+            type="text"
+            id="previousSchool"
+            placeholder="Enter the name of your previous school">
+
+    </div>
+
+    <!-- Highest Qualification -->
+
+    <div class="field">
+
+        <label>Highest Qualification</label>
+
+        <select id="qualification">
+
+            <option value="">Select Highest Qualification</option>
+
+            <option>Secondary / High School Certificate</option>
+
+            <option>High School Diploma</option>
+
+            <option>Foundation Programme / Pre-University</option>
+
+            <option>Diploma</option>
+
+            <option>Advanced Diploma</option>
+
+            <option>Associate Degree</option>
+
+            <option>Bachelor's Degree</option>
+
+            <option>Postgraduate Diploma</option>
+
+            <option>Master's Degree</option>
+
+            <option>Doctorate (PhD)</option>
+
+            <option>Professional Qualification</option>
+
+            <option>Other</option>
+
+        </select>
+
+    </div>
+
+    <!-- Qualification / Examination Name -->
+
+    <div class="field">
+
+        <label>Qualification / Examination Name</label>
+
+        <input
+            type="text"
+            id="qualificationName"
+            placeholder="e.g. WAEC, KCSE, A-Level, IB Diploma, National Senior Certificate">
+
+    </div>
+
+    <!-- Graduation Year -->
+
+    <div class="field">
+
+        <label>Graduation Year</label>
+
+        <input
+            type="number"
+            id="graduationYear"
+            placeholder="e.g. 2024">
+
+    </div>
+
+</div>
+
+
+
+
+
+   <!-- STEP 6 DOCUMENTS -->
+
+
+    <div class="form-step" id="step6">
+
+
+      <div class="field">
+
+        <label>Passport Photograph</label>
+
+        <input 
+        type="file"
+        id="passport">
+
+      </div>
+
+
+
+      <div class="field">
+
+        <label>Academic Result</label>
+
+        <input 
+        type="file"
+        id="result">
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+   <!-- STEP 7 REVIEW -->
+
+
+    <div class="form-step" id="step7">
+
+
+       <h3>
+         Application Summary
+       </h3>
+
+
+        <div id="reviewBox">
+
+          Your information will appear here.
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+  <!-- STEP 8 PAYMENT -->
+
+
+   <div class="form-step" id="step8">
+
+
+        <div class="payment-box">
+
+
+           <h3>
+             Application Fee
+           </h3>
+
+
+            <h1 id="amount">
+
+             $25
+
+            </h1>
+
+
+            <p>
+
+              Secure payment powered by Flutterwave
+
+            </p>
+
+        </div>
+            <button
+                 type="button"
+                 id="payButton"
+                 class="btn"
+>
+                Pay Application Fee →
+            </button>
+
+    </div>
+
+    <div class="buttons">
+
+        <button
+            type="button"
+            id="prevBtn"
+            class="btn secondary"
+            style="display:none;"
+        >
+            ← Previous
+        </button>
+
+        <button
+            type="button"
+            id="nextBtn"
+            class="btn"
+        >
+            Next →
+        </button>
+
+    </div>
+
+</form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
+<script src="js/admission.js"></script>
+
+</body>
+</html>
