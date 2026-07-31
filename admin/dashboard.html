@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusHub Admin Dashboard</title>
+
+<link rel="stylesheet" href="../css/admin.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>CampusHub Admin Dashboard</h1>
+
+    <div class="dashboard-cards">
+
+        <div class="card">
+            <h2 id="totalApplications">0</h2>
+            <p>Total Applications</p>
+        </div>
+
+        <div class="card">
+            <h2 id="submittedApplications">0</h2>
+            <p>Submitted</p>
+        </div>
+
+        <div class="card">
+            <h2 id="approvedApplications">0</h2>
+            <p>Approved</p>
+        </div>
+
+        <div class="card">
+            <h2 id="rejectedApplications">0</h2>
+            <p>Rejected</p>
+        </div>
+
+        <div class="card">
+            <h2 id="paidApplications">0</h2>
+            <p>Paid</p>
+        </div>
+
+
+        <div class="card">
+
+      <h3>Admission Fee</h3>
+
+      <input
+      type="number"
+      id="admissionFee"
+      placeholder="Enter admission fee"
+      min="0"
+      step="1">
+
+      <br><br>
+
+        <button
+          id="saveFeeBtn">
+
+           Save Fee
+
+         </button>
+
+       </div>
+
+    </div>
+
+    <div class="quick-actions">
+
+        <a href="applications.html" class="action-btn">
+            Manage Applications
+        </a>
+
+        <a href="schools.html" class="action-btn">
+            Schools
+        </a>
+
+        <a href="faculties.html" class="action-btn">
+            Faculties
+        </a>
+
+        <a href="departments.html" class="action-btn">
+            Departments
+        </a>
+
+        <a href="programmes.html" class="action-btn">
+            Programmes
+        </a>
+
+    </div>
+
+    <h2>Recent Applications</h2>
+
+    <table id="recentApplications">
+
+        <thead>
+
+            <tr>
+
+                <th>Application No.</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
