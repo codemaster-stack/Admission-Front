@@ -138,7 +138,7 @@ async function loadProgrammes() {
 
                     </p>
 
-                    <a href="apply.html">
+                    <a href="/apply">
 
                         Apply Now
 

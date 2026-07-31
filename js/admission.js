@@ -495,7 +495,7 @@ formData.append(
 
 stopLoading("nextBtn", "Proceed to Payment");
 
-    window.location.href = "payment.html";
+    window.location.href = "/payment";
 
 }
 

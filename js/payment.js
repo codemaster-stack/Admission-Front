@@ -12,7 +12,7 @@ if (!applicationId || !customer) {
 
     alert("Application not found.");
 
-    window.location.href = "index.html";
+    window.location.href = "/index";
 
 }
 
@@ -60,7 +60,7 @@ async function loadApplication() {
 
             alert(data.message);
 
-            window.location.href = "index.html";
+            window.location.href = "/index";
 
             return;
 
