@@ -92,7 +92,7 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(
-            "https://admission-api-r5y6.onrender.com/api/admission"
+            "https://admission-api-r5y6.onrender.com/api/admissions"
         );
 
         const data = await response.json();
