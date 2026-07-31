@@ -252,3 +252,8 @@ button{
     font-size:15px;
 
 }
+
+.action-buttons{
+    display: flex;
+    gap: 20px;
+}
