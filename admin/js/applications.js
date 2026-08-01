@@ -1,6 +1,6 @@
 
 let applications = [];
-
+let admissionFee = 25;
 async function loadApplications() {
 
     try {
@@ -165,11 +165,3 @@ document
 .addEventListener("change", filterApplications);
 
 loadApplications();
-
-// loadDashboard();
-
-// document
-// .getElementById("saveFeeBtn")
-// .addEventListener("click", saveAdmissionFee);
-
-// loadAdmissionFee();

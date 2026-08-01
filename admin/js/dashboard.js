@@ -14,19 +14,19 @@ async function loadAdmissionFee() {
 
         if (data.success) {
 
-            document.getElementById("admissionFee").value =
-                data.setting.admissionFee;
+            admissionFee = data.setting.admissionFee;
 
         }
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(error);
 
     }
 
 }
-
 
 // =============================
 // SAVE ADMISSION FEE

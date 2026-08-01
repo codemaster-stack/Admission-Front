@@ -363,7 +363,7 @@ function getApplicationData() {
 
         // Payment
 
-        amount: 25
+        amount: admissionFee
 
     };
 
@@ -722,6 +722,7 @@ if (passport) {
 // START
 // ------------------------------
 
+loadAdmissionFee();
 loadCountries();
 countrySelect.addEventListener("change", function () {
 
