@@ -128,7 +128,7 @@ async function loadDashboard() {
                     <td>${`${app.firstName} ${app.lastName}`}</td>
                     <td>${app.applicationStatus}</td>
                     <td>
-                        <a href="/application-details?id=${app._id}">
+                        <a href="/admin/application-details?id=${app._id}">
                             View
                         </a>
                     </td>
