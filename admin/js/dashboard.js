@@ -1,32 +1,3 @@
-// =============================
-// LOAD ADMISSION FEE
-// =============================
-
-async function loadAdmissionFee() {
-
-    try {
-
-        const response = await fetch(
-            "https://admission-api-r5y6.onrender.com/api/settings"
-        );
-
-        const data = await response.json();
-
-        if (data.success) {
-
-            admissionFee = data.setting.admissionFee;
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-    }
-
-}
 
 // =============================
 // SAVE ADMISSION FEE
