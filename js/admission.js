@@ -251,7 +251,7 @@ function showStep(step){
 
     nextBtn.textContent =
         step === totalSteps
-        ? "Proceed to Payment"
+        ? "Proceed to Submition"
         : "Next →";
 
 }
@@ -386,7 +386,7 @@ async function submitApplication() {
 
         phoneInput.focus();
 
-        stopLoading("nextBtn", "Proceed to Payment");
+        stopLoading("nextBtn", "Proceed to Submition");
 
         return;
 
@@ -398,7 +398,7 @@ async function submitApplication() {
 
         guardianPhoneInput.focus();
 
-        stopLoading("nextBtn", "Proceed to Payment");
+        stopLoading("nextBtn", "Proceed to Submition");
 
         return;
 
@@ -436,7 +436,7 @@ formData.append(
 
         alert("Please select your destination.");
 
-        stopLoading("nextBtn", "Proceed to Payment");
+        stopLoading("nextBtn", "Proceed to Submition");
 
         return;
 
@@ -446,7 +446,7 @@ formData.append(
 
         alert("Please select institution type.");
 
-        stopLoading("nextBtn", "Proceed to Payment");
+        stopLoading("nextBtn", "Proceed to Submition");
 
         return;
 
@@ -456,7 +456,7 @@ formData.append(
 
         alert("Please select institution.");
 
-        stopLoading("nextBtn", "Proceed to Payment");
+        stopLoading("nextBtn", "Proceed to Submition");
 
         return;
 
@@ -488,7 +488,7 @@ formData.append(
 
         alert(result.message);
 
-        stopLoading("nextBtn", "Proceed to Payment");
+        stopLoading("nextBtn", "Proceed to Submition");
 
         return;
 
@@ -516,7 +516,7 @@ formData.append(
     })
 );
 
-stopLoading("nextBtn", "Proceed to Payment");
+stopLoading("nextBtn", "Proceed to Submition");
 
     startFlutterwavePayment(result.application);
 
@@ -528,7 +528,7 @@ catch(error){
 
     alert("Unable to submit application.");
 
-    stopLoading("nextBtn","Proceed to Payment");
+    stopLoading("nextBtn","Proceed to Submition");
 
 }
 
