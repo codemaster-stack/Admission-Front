@@ -236,32 +236,35 @@ async function updateStatus(status) {
 
     try {
 
-        const response = await fetch(
+      const token = localStorage.getItem("token");
 
-            `https://admission-api-r5y6.onrender.com/api/admissions/${id}/status`,
+const response = await fetch(
 
-            {
+    `https://admission-api-r5y6.onrender.com/api/admissions/${id}/status`,
 
-                method: "PATCH",
+    {
 
-                headers: {
+        method: "PATCH",
 
-                    "Content-Type": "application/json"
+        headers: {
 
-                },
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
 
-              body: JSON.stringify({
+        },
 
-    applicationStatus: status,
+        body: JSON.stringify({
 
-    adminRemark:
-        document.getElementById("adminRemark").value
+            applicationStatus: status,
 
-})
+            adminRemark:
+                document.getElementById("adminRemark").value
 
-            }
+        })
 
-        );
+    }
+
+);
 
         const result = await response.json();
 
