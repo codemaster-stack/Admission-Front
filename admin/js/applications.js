@@ -107,7 +107,7 @@ View
 function viewApplication(id){
 
     window.location.href =
-        `application-details.html?id=${id}`;
+        `/admin/application-details?id=${id}`;
 
 }
 
@@ -166,10 +166,10 @@ document
 
 loadApplications();
 
-loadDashboard();
+// loadDashboard();
 
-document
-.getElementById("saveFeeBtn")
-.addEventListener("click", saveAdmissionFee);
+// document
+// .getElementById("saveFeeBtn")
+// .addEventListener("click", saveAdmissionFee);
 
-loadAdmissionFee();
+// loadAdmissionFee();
