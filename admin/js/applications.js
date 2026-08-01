@@ -165,3 +165,11 @@ document
 .addEventListener("change", filterApplications);
 
 loadApplications();
+
+loadDashboard();
+
+document
+.getElementById("saveFeeBtn")
+.addEventListener("click", saveAdmissionFee);
+
+loadAdmissionFee();
