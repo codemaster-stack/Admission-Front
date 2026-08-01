@@ -2,262 +2,262 @@
    CAMPUSHUB FLUTTERWAVE PAYMENT
 =========================================== */
 
-const applicationId = localStorage.getItem("applicationId");
+// const applicationId = localStorage.getItem("applicationId");
 
-const customer = JSON.parse(
-    localStorage.getItem("paymentCustomer")
-);
+// const customer = JSON.parse(
+//     localStorage.getItem("paymentCustomer")
+// );
 
-if (!applicationId || !customer) {
+// if (!applicationId || !customer) {
 
-    alert("Application not found.");
+//     alert("Application not found.");
 
-    window.location.href = "/index";
+//     window.location.href = "/index";
 
-}
+// }
 
-let application = null;
+// let application = null;
 
-const currencyMap = {
+// const currencyMap = {
 
-    "Nigeria": "NGN",
+//     "Nigeria": "NGN",
 
-    "Ghana": "GHS",
+//     "Ghana": "GHS",
 
-    "Kenya": "KES",
+//     "Kenya": "KES",
 
-    "South Africa": "ZAR",
+//     "South Africa": "ZAR",
 
-    "United Kingdom": "GBP",
+//     "United Kingdom": "GBP",
 
-    "United States": "USD",
+//     "United States": "USD",
 
-    "Canada": "CAD",
+//     "Canada": "CAD",
 
-    "Australia": "AUD",
+//     "Australia": "AUD",
 
-    "India": "INR"
+//     "India": "INR"
 
-};
+// };
 
 // ------------------------------------
 // LOAD APPLICATION FROM DATABASE
 // ------------------------------------
 
-async function loadApplication() {
+// async function loadApplication() {
 
-    try {
+//     try {
 
-        const response = await fetch(
+//         const response = await fetch(
 
-            `https://admission-api-r5y6.onrender.com/api/admissions/${applicationId}`
+//             `https://admission-api-r5y6.onrender.com/api/admissions/${applicationId}`
 
-        );
+//         );
 
-        const data = await response.json();
+//         const data = await response.json();
 
-        if (!data.success) {
+//         if (!data.success) {
 
-            alert(data.message);
+//             alert(data.message);
 
-            window.location.href = "/index";
+//             window.location.href = "/index";
 
-            return;
+//             return;
 
-        }
+//         }
 
-        application = data.application;
+//         application = data.application;
 
-        const currency =
-            currencyMap[application.country] || "USD";
+//         const currency =
+//             currencyMap[application.country] || "USD";
 
-        document.getElementById("amount").textContent =
-            application.amount;
+//         document.getElementById("amount").textContent =
+//             application.amount;
 
-        document.getElementById("currency").textContent =
-            currency;
+//         document.getElementById("currency").textContent =
+//             currency;
 
-    }
+//     }
 
-    catch (error) {
+//     catch (error) {
 
-        console.error(error);
+//         console.error(error);
 
-        alert("Unable to load application.");
+//         alert("Unable to load application.");
 
-    }
+//     }
 
-}
+// }
 
-loadApplication();
+// loadApplication();
 
 // ------------------------------------
 // PAYMENT
 // ------------------------------------
 
-document
-.getElementById("payButton")
-.addEventListener("click", function () {
+// document
+// .getElementById("payButton")
+// .addEventListener("click", function () {
 
-    if (!application) {
+//     if (!application) {
 
-        alert("Application not loaded.");
+//         alert("Application not loaded.");
 
-        return;
+//         return;
 
-    }
+//     }
 
-    const currency =
-        currencyMap[application.country] || "USD";
+//     const currency =
+//         currencyMap[application.country] || "USD";
 
-    FlutterwaveCheckout({
+//     FlutterwaveCheckout({
 
-        public_key:
+//         public_key:
 
-        "FLWPUBK_TEST-b557be59f1b553143efee33d3f7831be-X",
+//         "FLWPUBK_TEST-b557be59f1b553143efee33d3f7831be-X",
 
-        tx_ref:
+//         tx_ref:
 
-        "CAMPUSHUB-" + Date.now(),
+//         "CAMPUSHUB-" + Date.now(),
 
-        amount:
+//         amount:
 
-        application.amount,
+//         application.amount,
 
-        currency:
+//         currency:
 
-        currency,
+//         currency,
 
-        payment_options:
+//         payment_options:
 
-        "card,banktransfer,ussd",
+//         "card,banktransfer,ussd",
 
-        customer: {
+//         customer: {
 
-            email:
+//             email:
 
-            customer.email,
+//             customer.email,
 
-            phone_number:
+//             phone_number:
 
-            customer.phone,
+//             customer.phone,
 
-            name:
+//             name:
 
-            customer.firstName +
+//             customer.firstName +
 
-            " " +
+//             " " +
 
-            customer.lastName
+//             customer.lastName
 
-        },
+//         },
 
-        customizations: {
+//         customizations: {
 
-            title:
+//             title:
 
-            "CampusHub Admissions",
+//             "CampusHub Admissions",
 
-            description:
+//             description:
 
-            "University Admission Application Fee",
+//             "University Admission Application Fee",
 
-            logo:
+//             logo:
 
-            "images/logo.png"
+//             "images/logo.png"
 
-        },
+//         },
 
-        callback: async function (payment) {
+//         callback: async function (payment) {
 
-            if (payment.status !== "successful") {
+//             if (payment.status !== "successful") {
 
-                alert("Payment was not successful.");
+//                 alert("Payment was not successful.");
 
-                return;
+//                 return;
 
-            }
+//             }
 
-            try {
+//             try {
 
-                const response = await fetch(
+//                 const response = await fetch(
 
-                    "https://admission-api-r5y6.onrender.com/api/payments/verify",
+//                     "https://admission-api-r5y6.onrender.com/api/payments/verify",
 
-                    {
+//                     {
 
-                        method: "POST",
+//                         method: "POST",
 
-                        headers: {
+//                         headers: {
 
-                            "Content-Type": "application/json"
+//                             "Content-Type": "application/json"
 
-                        },
+//                         },
 
-                        body: JSON.stringify({
+//                         body: JSON.stringify({
 
-                            transaction_id:
+//                             transaction_id:
 
-                            payment.transaction_id,
+//                             payment.transaction_id,
 
-                            applicationId
+//                             applicationId
 
-                        })
+//                         })
 
-                    }
+//                     }
 
-                );
+//                 );
 
-                const result =
-                    await response.json();
+//                 const result =
+//                     await response.json();
 
-                if (!response.ok) {
+//                 if (!response.ok) {
 
-                    alert(
+//                     alert(
 
-                        result.message ||
+//                         result.message ||
 
-                        "Payment verification failed."
+//                         "Payment verification failed."
 
-                    );
+//                     );
 
-                    return;
+//                     return;
 
-                }
+//                 }
 
-                localStorage.setItem(
+//                 localStorage.setItem(
 
-                    "applicationNumber",
+//                     "applicationNumber",
 
-                    result.application.applicationNumber
+//                     result.application.applicationNumber
 
-                );
+//                 );
 
-                localStorage.removeItem("paymentCustomer");
+//                 localStorage.removeItem("paymentCustomer");
 
-                localStorage.removeItem("applicationId");
+//                 localStorage.removeItem("applicationId");
 
-                window.location.href =
-                    "success.html";
+//                 window.location.href =
+//                     "success.html";
 
-            }
+//             }
 
-            catch (error) {
+//             catch (error) {
 
-                console.error(error);
+//                 console.error(error);
 
-                alert("Unable to verify payment.");
+//                 alert("Unable to verify payment.");
 
-            }
+//             }
 
-        },
+//         },
 
-        onclose: function () {
+//         onclose: function () {
 
-            console.log("Payment cancelled.");
+//             console.log("Payment cancelled.");
 
-        }
+//         }
 
-    });
+//     });
 
-});
+// });
