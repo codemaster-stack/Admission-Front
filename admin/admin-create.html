@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Admission Admin</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f7fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Create Admin</h1>
+
+    <form id="adminForm">
+
+        <label for="name">
+            Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            required
+        >
+
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            required
+        >
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            required
+            minlength="6"
+        >
+
+        <button
+            type="submit"
+            id="submitButton"
+        >
+            Create Admin
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+</div>
+
+
+<script>
+
+const API =
+    "https://admission-api-r5y6.onrender.com/api/admin/create";
+
+
+const form =
+    document.getElementById("adminForm");
+
+
+const message =
+    document.getElementById("message");
+
+
+const submitButton =
+    document.getElementById("submitButton");
+
+
+form.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("name").value.trim();
+
+
+    const email =
+        document.getElementById("email").value.trim();
+
+
+    const password =
+        document.getElementById("password").value;
+
+
+    message.textContent =
+        "Creating admin...";
+
+
+    submitButton.disabled = true;
+
+
+    try {
+
+        const response =
+            await fetch(API, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password
+                })
+
+            });
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok || !data.success) {
+
+            message.textContent =
+                data.message ||
+                "Unable to create admin.";
+
+            submitButton.disabled = false;
+
+            return;
+        }
+
+
+        message.textContent =
+            "Admin created successfully.";
+
+        form.reset();
+
+
+    } catch (error) {
+
+        console.error(
+            "CREATE ADMIN ERROR:",
+            error
+        );
+
+        message.textContent =
+            "Network error. Please try again.";
+
+    }
+
+
+    submitButton.disabled = false;
+
+});
+
+</script>
+
+</body>
+
+</html>
