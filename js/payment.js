@@ -2,11 +2,11 @@
    CAMPUSHUB FLUTTERWAVE PAYMENT
 =========================================== */
 
-// const applicationId = localStorage.getItem("applicationId");
+const applicationId = localStorage.getItem("applicationId");
 
-// const customer = JSON.parse(
-//     localStorage.getItem("paymentCustomer")
-// );
+const customer = JSON.parse(
+    localStorage.getItem("paymentCustomer")
+);
 
 // if (!applicationId || !customer) {
 
@@ -16,248 +16,106 @@
 
 // }
 
-// let application = null;
+let application = null;
 
-// const currencyMap = {
+const currencyMap = {
 
-//     "Nigeria": "NGN",
+    "Nigeria": "NGN",
 
-//     "Ghana": "GHS",
+    "Ghana": "GHS",
 
-//     "Kenya": "KES",
+    "Kenya": "KES",
 
-//     "South Africa": "ZAR",
+    "South Africa": "ZAR",
 
-//     "United Kingdom": "GBP",
+    "United Kingdom": "GBP",
 
-//     "United States": "USD",
+    "United States": "USD",
 
-//     "Canada": "CAD",
+    "Canada": "CAD",
 
-//     "Australia": "AUD",
+    "Australia": "AUD",
 
-//     "India": "INR"
+    "India": "INR"
 
-// };
+};
 
 // ------------------------------------
 // LOAD APPLICATION FROM DATABASE
 // ------------------------------------
 
-// async function loadApplication() {
+async function loadApplication() {
 
-//     try {
+    try {
 
-//         const response = await fetch(
+        const response = await fetch(
 
-//             `https://admission-api-r5y6.onrender.com/api/admissions/${applicationId}`
+            `https://admission-api-r5y6.onrender.com/api/admissions/${applicationId}`
 
-//         );
+        );
 
-//         const data = await response.json();
+        const data = await response.json();
 
-//         if (!data.success) {
+        if (!data.success) {
 
-//             alert(data.message);
+            alert(data.message);
 
-//             window.location.href = "/index";
+            window.location.href = "index";
 
-//             return;
+            return;
 
-//         }
+        }
 
-//         application = data.application;
+        application = data.application;
 
-//         const currency =
-//             currencyMap[application.country] || "USD";
+        const currency =
+            currencyMap[application.country] || "USD";
 
-//         document.getElementById("amount").textContent =
-//             application.amount;
+        document.getElementById("amount").textContent =
+            application.amount;
 
-//         document.getElementById("currency").textContent =
-//             currency;
+        document.getElementById("currency").textContent =
+            currency;
 
-//     }
+    }
 
-//     catch (error) {
+    catch (error) {
 
-//         console.error(error);
+        console.error(error);
 
-//         alert("Unable to load application.");
+        alert("Unable to load application.");
 
-//     }
+    }
 
-// }
+}
 
-// loadApplication();
+loadApplication();
 
 // ------------------------------------
 // PAYMENT
 // ------------------------------------
 
-// document
-// .getElementById("payButton")
-// .addEventListener("click", function () {
+function startFlutterwavePayment() {
 
-//     if (!application) {
+    if (!application) {
 
-//         alert("Application not loaded.");
+        alert("Application not loaded.");
 
-//         return;
+        return;
 
-//     }
+    }
 
-//     const currency =
-//         currencyMap[application.country] || "USD";
+    const currency =
+        currencyMap[application.country] || "USD";
 
-//     FlutterwaveCheckout({
+    FlutterwaveCheckout({
 
-//         public_key:
+        // Paste ALL your existing FlutterwaveCheckout code here unchanged
 
-//         "FLWPUBK_TEST-b557be59f1b553143efee33d3f7831be-X",
+    });
 
-//         tx_ref:
+}
 
-//         "CAMPUSHUB-" + Date.now(),
-
-//         amount:
-
-//         application.amount,
-
-//         currency:
-
-//         currency,
-
-//         payment_options:
-
-//         "card,banktransfer,ussd",
-
-//         customer: {
-
-//             email:
-
-//             customer.email,
-
-//             phone_number:
-
-//             customer.phone,
-
-//             name:
-
-//             customer.firstName +
-
-//             " " +
-
-//             customer.lastName
-
-//         },
-
-//         customizations: {
-
-//             title:
-
-//             "CampusHub Admissions",
-
-//             description:
-
-//             "University Admission Application Fee",
-
-//             logo:
-
-//             "images/logo.png"
-
-//         },
-
-//         callback: async function (payment) {
-
-//             if (payment.status !== "successful") {
-
-//                 alert("Payment was not successful.");
-
-//                 return;
-
-//             }
-
-//             try {
-
-//                 const response = await fetch(
-
-//                     "https://admission-api-r5y6.onrender.com/api/payments/verify",
-
-//                     {
-
-//                         method: "POST",
-
-//                         headers: {
-
-//                             "Content-Type": "application/json"
-
-//                         },
-
-//                         body: JSON.stringify({
-
-//                             transaction_id:
-
-//                             payment.transaction_id,
-
-//                             applicationId
-
-//                         })
-
-//                     }
-
-//                 );
-
-//                 const result =
-//                     await response.json();
-
-//                 if (!response.ok) {
-
-//                     alert(
-
-//                         result.message ||
-
-//                         "Payment verification failed."
-
-//                     );
-
-//                     return;
-
-//                 }
-
-//                 localStorage.setItem(
-
-//                     "applicationNumber",
-
-//                     result.application.applicationNumber
-
-//                 );
-
-//                 localStorage.removeItem("paymentCustomer");
-
-//                 localStorage.removeItem("applicationId");
-
-//                 window.location.href =
-//                     "success.html";
-
-//             }
-
-//             catch (error) {
-
-//                 console.error(error);
-
-//                 alert("Unable to verify payment.");
-
-//             }
-
-//         },
-
-//         onclose: function () {
-
-//             console.log("Payment cancelled.");
-
-//         }
-
-//     });
-
-// });
+document
+.getElementById("payButton")
+.addEventListener("click", startFlutterwavePayment);
